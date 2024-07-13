@@ -4,7 +4,7 @@ const Home = ({ filteredHtmlContent }) => (
   <div dangerouslySetInnerHTML={{ __html: filteredHtmlContent }} />
 );
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const res = await fetch('https://relieved-wonders-535034.framer.app/');
   const htmlContent = await res.text();
   
@@ -17,7 +17,10 @@ export async function getServerSideProps() {
   // Get the filtered HTML content
   const filteredHtmlContent = $.html();
 
-  return { props: { filteredHtmlContent } };
+  return {
+    props: { filteredHtmlContent },
+    revalidate: 60, // Revalidate the page every 60 seconds
+  };
 }
 
 export default Home;
