@@ -5,7 +5,7 @@ const Home = ({ filteredHtmlContent }) => (
 );
 
 export async function getStaticProps() {
-  const res = await fetch('https://relieved-wonders-535034.framer.app/');
+  const res = await fetch('https://particular-action-305279.framer.app');
   const htmlContent = await res.text();
   
   // Load HTML content using cheerio
