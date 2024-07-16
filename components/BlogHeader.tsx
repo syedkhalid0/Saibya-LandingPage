@@ -1,48 +1,39 @@
-import { PortableText } from '@portabletext/react'
-import Link from 'next/link'
+import React from "react";
+import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Input, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar} from "@nextui-org/react";
+import {AcmeLogo} from "./AcmeLogo.jsx";
+import {SearchIcon} from "./SearchIcon.jsx";
 
-import styles from './BlogHeader.module.css'
-
-export default function BlogHeader({
-  title,
-  description,
-  level,
-}: {
-  title: string
-  description?: any[]
-  level: 1 | 2
-}) {
-  switch (level) {
-    case 1:
-      return (
-        <header className="mb-10 mt-16 flex flex-col items-center md:mb-12 md:flex-row md:justify-between text-pretty">
-          <h1 className="text-6xl font-bold leading-tight tracking-tighter md:pr-8 md:text-8xl">
-            Hello World!
-          </h1>
-          <h4
-            className={`mt-5 text-center text-lg md:pl-8 md:text-left ${styles.portableText}`}
-          >
-            <PortableText value={description} />
-          </h4>
-        </header>
-      )
-
-    case 2:
-      return (
-        <header>
-          <h2 className="mb-20 mt-8 text-2xl font-bold leading-tight tracking-tight md:text-4xl md:tracking-tighter text-pretty">
-            <Link href="/" className="hover:underline">
-              Hello World!
+export default function App() {
+  return (
+    <Navbar isBordered>
+      <NavbarContent justify="start">
+        <NavbarBrand className="mr-4">
+          <AcmeLogo />
+          <p className="hidden sm:block font-bold text-inherit">Saibya</p>
+        </NavbarBrand>
+        <NavbarContent className="hidden sm:flex gap-3">
+          <NavbarItem>
+            <Link color="foreground" href="https://sandbox.syedkhalid.me">
+              Home
             </Link>
-          </h2>
-        </header>
-      )
+          </NavbarItem>
+        </NavbarContent>
+      </NavbarContent>
 
-    default:
-      throw new Error(
-        `Invalid level: ${
-          JSON.stringify(level) || typeof level
-        }, only 1 or 2 are allowed`,
-      )
-  }
+      <NavbarContent as="div" className="items-center" justify="end">
+        <Input
+          classNames={{
+            base: "max-w-full sm:max-w-[10rem] h-10",
+            mainWrapper: "h-full",
+            input: "text-small",
+            inputWrapper: "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
+          }}
+          placeholder="Type to search..."
+          size="sm"
+          startContent={<SearchIcon size={18} />}
+          type="search"
+        />
+      </NavbarContent>
+    </Navbar>
+  );
 }
