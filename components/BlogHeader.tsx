@@ -1,7 +1,4 @@
 import React from "react";
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Input, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar} from "@nextui-org/react";
-import {AcmeLogo} from "./AcmeLogo.jsx";
-import {SearchIcon} from "./SearchIcon.jsx";
 
 export default function App() {
   return (
